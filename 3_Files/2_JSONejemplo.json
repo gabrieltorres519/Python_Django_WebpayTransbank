@@ -1,0 +1,74 @@
+{
+    "post": [
+        {
+            "id": 1,
+            "titulo": "Titulo de la publicaci\u00f3n 1",
+            "slug": "titulo-de-la-publicacion-1",
+            "detalle": "texto de detalle 1",
+            "fecha": "2024-01-23"
+        },
+        {
+            "id": 2,
+            "titulo": "Titulo de la publicaci\u00f3n 2",
+            "slug": "titulo-de-la-publicacion-2",
+            "detalle": "texto de detalle 2",
+            "fecha": "2024-01-23"
+        },
+        {
+            "id": 3,
+            "titulo": "Titulo de la publicaci\u00f3n 3",
+            "slug": "titulo-de-la-publicacion-3",
+            "detalle": "texto de detalle 3",
+            "fecha": "2024-01-23"
+        },
+        {
+            "id": 4,
+            "titulo": "Titulo de la publicaci\u00f3n 4",
+            "slug": "titulo-de-la-publicacion-4",
+            "detalle": "texto de detalle 4",
+            "fecha": "2024-01-23"
+        },
+        {
+            "id": 5,
+            "titulo": "Titulo de la publicaci\u00f3n 5",
+            "slug": "titulo-de-la-publicacion-5",
+            "detalle": "texto de detalle 5",
+            "fecha": "2024-01-23"
+        },
+        {
+            "id": 6,
+            "titulo": "Titulo de la publicaci\u00f3n 6",
+            "slug": "titulo-de-la-publicacion-6",
+            "detalle": "texto de detalle 6",
+            "fecha": "2024-01-23"
+        },
+        {
+            "id": 7,
+            "titulo": "Titulo de la publicaci\u00f3n 7",
+            "slug": "titulo-de-la-publicacion-7",
+            "detalle": "texto de detalle 7",
+            "fecha": "2024-01-23"
+        },
+        {
+            "id": 8,
+            "titulo": "Titulo de la publicaci\u00f3n 8",
+            "slug": "titulo-de-la-publicacion-8",
+            "detalle": "texto de detalle 8",
+            "fecha": "2024-01-23"
+        },
+        {
+            "id": 9,
+            "titulo": "Titulo de la publicaci\u00f3n 9",
+            "slug": "titulo-de-la-publicacion-9",
+            "detalle": "texto de detalle 9",
+            "fecha": "2024-01-23"
+        },
+        {
+            "id": 10,
+            "titulo": "Titulo de la publicaci\u00f3n 10",
+            "slug": "titulo-de-la-publicacion-10",
+            "detalle": "texto de detalle 10",
+            "fecha": "2024-01-23"
+        }
+    ]
+}
