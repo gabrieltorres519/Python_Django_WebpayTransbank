@@ -1,13 +1,16 @@
 import mysql.connector
 from mysql.connector import errorcode
 
+# se require del módulo pip install mysql-connector-python
+# Se requiere de mysql, apache2, php y phpmyadmin para un desarrollo más rápido
+
 def conectar():
     try: 
         return mysql.connector.connect(
             host='localhost',
             port= 3306,
             user= 'gabriel',
-            passwd= '***',
+            passwd= 'ChessNoobButLover',
             database= 'PythonMySQL'
         )
     except mysql.connector.Error as e: # El código estarpa atento al tipo de excepción de mysql 
