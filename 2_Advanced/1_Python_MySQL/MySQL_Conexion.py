@@ -7,7 +7,7 @@ def conectar():
             host='localhost',
             port= 3306,
             user= 'gabriel',
-            passwd= '*****',
+            passwd= '***',
             database= 'PythonMySQL'
         )
     except mysql.connector.Error as e: # El código estarpa atento al tipo de excepción de mysql 

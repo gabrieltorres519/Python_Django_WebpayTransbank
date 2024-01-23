@@ -6,9 +6,23 @@
 
 from MySQL_Conexion import *
 
+# Ver datos
 
 datos = getDatos('SELECT * FROM productos;')
 
+# Dando formato y organizando para visualizar los datos recibidos
 for dato in datos:
     print(f"{dato[0]} - {dato[1]} - {numberFormat(dato[3])}")
 
+
+# Acrualizar datos 
+    
+setDatos("UPDATE productos SET precio=97987 WHERE id=1;")
+
+# Crear nuevo producto
+
+setDatos("INSERT INTO productos VALUES(null, 'Marco de foto','descripcion', 300)")
+
+# Borrar un registro de la base
+
+setDatos("DELETE FROM productos WHERE id=3")
