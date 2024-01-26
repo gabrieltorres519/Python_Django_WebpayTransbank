@@ -1,8 +1,12 @@
 import tkinter as tk 
 from PIL import Image, ImageTk
+from tkinter import messagebox
 
 def saludo():
-    print("Hola desde el botón")
+    messagebox.showinfo("Gabriel", "Hola cómo estás?") # Hay varias opciones showsomething diferentes
+
+def con_parametros(nombre, apellido):
+    messagebox.showinfo("Gabriel", f"Hola {nombre} {apellido}!!!")
 
 ventana = tk.Tk()
 ventana.title("Hola desde Python")
@@ -14,7 +18,8 @@ etiqueta = tk.Label(ventana, text='Título de la ventana', fg="#ffffff", bg="blu
 # etiqueta.pack(fill=tk.BOTH, expand=True) # Para que el cuadro de texto ocupe todo el espacio
 etiqueta.pack() # Cargando el título
 
-boton = tk.Button(ventana, text="Presiona aquí", command=saludo) # Agregando un botón a la ventana
+# Si queremos que una función se ejecute por defecto al abrir la ventana se le pasa a command = saludo()
+boton = tk.Button(ventana, text="Presiona aquí", command=lambda:con_parametros("César","Torres")) # Agregando un botón a la ventana
 boton.pack() # Cargando el botón
 
 # Cargar la imagen con Pillow
