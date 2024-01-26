@@ -1,6 +1,8 @@
 import tkinter as tk 
 from PIL import Image, ImageTk
 
+def saludo():
+    print("Hola desde el botón")
 
 ventana = tk.Tk()
 ventana.title("Hola desde Python")
@@ -12,7 +14,7 @@ etiqueta = tk.Label(ventana, text='Título de la ventana', fg="#ffffff", bg="blu
 # etiqueta.pack(fill=tk.BOTH, expand=True) # Para que el cuadro de texto ocupe todo el espacio
 etiqueta.pack() # Cargando el título
 
-boton = tk.Button(ventana, text="Presiona aquí") # Agregando un botón a la ventana
+boton = tk.Button(ventana, text="Presiona aquí", command=saludo) # Agregando un botón a la ventana
 boton.pack() # Cargando el botón
 
 # Cargar la imagen con Pillow
