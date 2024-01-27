@@ -84,11 +84,11 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': conf['bd'],
-        'USER': conf['user'],
-        'PASSWORD': conf['password'],
-        'HOST': conf['server'],
-        'PORT': conf['puerto'],
+        'NAME': 'PythonMySQL',
+        'USER': 'gabriel',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
         'OPTIONS': {
           'autocommit': True,
         },
