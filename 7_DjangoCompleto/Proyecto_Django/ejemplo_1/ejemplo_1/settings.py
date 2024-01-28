@@ -86,8 +86,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'PythonMySQL',
         'USER': 'gabriel',
-        'PASSWORD': '',
-        'HOST': 'localhost',
+        'PASSWORD': 'ChessNoobButLover',
+        'HOST': '',
         'PORT': '3306',
         'OPTIONS': {
           'autocommit': True,
