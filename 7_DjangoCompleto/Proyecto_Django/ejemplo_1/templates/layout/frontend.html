@@ -25,8 +25,10 @@
           <div class="col-4 pt-1">
             <a class="text-muted" href="#">Subscribe</a>
           </div>
-          <div class="col-4 text-center">
-            <img src='{% static "images/anime_girl_face2.jpg" %}' alt=''/>
+          <div class="col-4 text-center">          {% comment %} Nótese que se usa el 'name' definido en urls.py de la carpeta home {% endcomment %}
+            <a class="blog-header-logo text-dark" href="{% url "home_inicio" %}">           
+              <img src='{% static "images/anime_girl_face2.jpg" %}' alt=''/>
+            </a>
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center">
             <a class="text-muted" href="#">
@@ -39,7 +41,7 @@
   
       <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
-          <a class="p-2 text-muted" href="#">World</a>
+          <a class="p-2 text-muted" href="{% url "nosotros_inicio" %}">Nosotros</a>
           <a class="p-2 text-muted" href="#">U.S.</a>
         </nav>
       </div>
