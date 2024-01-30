@@ -9,7 +9,7 @@
     <h3> Diseños y herramientas varias <i class="fas fa-search"></i> </h3>
     <ul> 
       <li>  
-        <a href="javascript:void(0);" data-toggle="modal" data-target="#ventana_modal"> Ventana Modal </a>
+        <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#ventana_modal" onclick="carga_ajax_get('{% url "diseno_modal" 123 %}','2','_ventana_modal');" > Ventana Modal </a>
       </li>
       <li>  
         <a href="javascript:void(0);" onclick="confirmaAlert('Hola')"> Jquery alert </a>
@@ -33,13 +33,13 @@
 {% endblock %}
 
 {% block bloque_js %}
-<script type="text/javascript" href=" {% static 'fancybox/jquery.fancybox.js' %} " ></script>
+<script type="text/javascript" src=" {% static 'fancybox/jquery.fancybox.js' %} " ></script>
 <script type="text/javascript">
-    $(document).ready(function(){
-      $(".fancybox").fancybox({
-        openEffect: 'none',
-        closeEffect: 'none',
-      });
+  $(document).ready(function(){
+    $(".fancybox").fancybox({
+      openEffect: 'none',
+      closeEffect: 'none',
     });
+  });
 </script>
 {% endblock %}
