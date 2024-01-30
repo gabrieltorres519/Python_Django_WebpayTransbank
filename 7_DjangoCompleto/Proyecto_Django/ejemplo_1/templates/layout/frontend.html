@@ -19,6 +19,8 @@
     <link href="{% static "css/jquery.alerts.min.css" %}" rel="stylesheet">
     <link href="{% static "fontawesome-5-8/css/all.css" %}" rel="stylesheet">
 
+    {% block bloque_css %} {% endblock %} 
+
   </head>
 
   <body>
@@ -96,6 +98,10 @@
     <script src="{% static 'js/bootstrap.js' %}"> </script> 
     <script src="{% static 'js/jquery.alerts.min.js' %}"></script>
     <script src="{% static 'js/funciones.js' %}"></script>
+
+    {% block bloque_js %} {% endblock %} 
+
+
 
   </body>
 </html>
