@@ -18,9 +18,11 @@
         <a href="{% static 'images/anime_girl_face2.jpg' %}" class="fancybox" > <img src="{% static "images/anime_girl_face2.jpg"%}" width="20" height="20" > </a>        
       </li>
       <li>  
-        <a href=""> Ajax </a>
+        <a href="javascript:void(0);" onclick="carga_ajax_get('{% url "diseno_ajax" 123 %}','2','contenido_ajax')" > Ajax </a>
       </li>
     </ul>
+    <hr />
+    <div id="contenido_ajax"> contenido inicial </div>
   </main><!-- /.container -->
 
 {% endblock  %}
