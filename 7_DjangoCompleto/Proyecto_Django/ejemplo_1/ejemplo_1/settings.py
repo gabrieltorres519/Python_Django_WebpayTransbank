@@ -11,11 +11,25 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from pathlib import Path
+import json
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# Reference to the json file with the important information (datos de configuración)
+ruta = os.path.dirname(os.path.abspath(__file__))
+f = open('{}/conf.json'.format(ruta),'r')
+conf_string = f.read()
+f.close()
+conf = json.loads(conf_string)
 
+BASE_URL = conf['base_url']
+TOTAL_PAGINAS = conf['paginacion']
+
+RUTA= conf['ruta']
+RUTA2= conf['ruta2']
+ 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -23,7 +37,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2_@xv=glz#@e5xp(9!r64&l%!)#2k*#^@)8ntu%bd(+m&@4wd%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = conf['debug']
 
 ALLOWED_HOSTS = ['127.0.0.1','dominio.com','www.dominio.com','ip del computador local']
 
@@ -84,11 +98,11 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'PythonMySQL',
-        'USER': 'gabriel',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'NAME': conf['bd'],
+        'USER': conf['user'],
+        'PASSWORD': conf['password'],
+        'HOST': conf['server'],
+        'PORT': conf['puerto'],
         'OPTIONS': {
           'autocommit': True,
         },
