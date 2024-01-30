@@ -56,6 +56,26 @@ class Perfiles(models.Model):
         verbose_name_plural = 'Perfiles'
 
 
+class UsersMetadata(models.Model):
+    pais = models.ForeignKey(Pais, models.DO_NOTHING) # Relación con la tabla país, para indicar de qué país es el usuario, de los contemplados en la base
+    user = models.ForeignKey(User, models.DO_NOTHING) # Esta relación es muy importante para agregar cosas a la tabla de usuarios de django, porque no la podemos modificar
+    genero = models.ForeignKey(Genero, models.DO_NOTHING)
+    correo = models.CharField(max_length=100, blank=True, null=True)
+    telefono = models.CharField(max_length=100, blank=True, null=True)
+    direccion = models.CharField(max_length=100, blank=True, null=True)
+    fecha_nacimiento = models.DateField(default='2001-08-22')
+
+
+
+    def __str__(self):
+        return f"{self.user.first_name} {self.user.last_name}"
+
+    class Meta:
+        db_table = 'users_metadata'
+        verbose_name = 'User metadata'
+        verbose_name_plural = 'Users metadata' 
+    
+
 class Categoria(models.Model):
     nombre = models.CharField(max_length=100, null=True)
     slug = AutoSlugField(populate_from='nombre')
