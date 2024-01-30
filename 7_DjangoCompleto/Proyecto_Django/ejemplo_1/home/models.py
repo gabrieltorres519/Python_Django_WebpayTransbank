@@ -56,6 +56,41 @@ class Perfiles(models.Model):
         verbose_name_plural = 'Perfiles'
 
 
+class Categoria(models.Model):
+    nombre = models.CharField(max_length=100, null=True)
+    slug = AutoSlugField(populate_from='nombre')
+
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        db_table = 'categoria'
+        verbose_name = 'Categoría'
+        verbose_name_plural = 'Categorías'
+
+
+class Producto(models.Model): 
+    # Dado que el producto está relacionado con una categoría de producto y si se borra una categoría que esté siendo usada por un producto no se permitirá
+    # Obviamente, como en sql, se pueden tener todas las llaves foráneas que se quieran, cuantas tablas relacionadas se necesiten
+    # Las relaciones manejadas son 1 a muchos
+    categoria = models.ForeignKey(Categoria, models.DO_NOTHING)
+    nombre = models.CharField(max_length=100, null=True)
+    slug = AutoSlugField(populate_from='nombre')
+    fecha = models.DateTimeField(auto_now=True) # Enviando por defecto la fecha actual
+    descripcion = models.TextField()
+    #hora = models.TimeField(auto_now=True)
+    #fecha = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        db_table = 'producto'
+        verbose_name = 'Producto'
+        verbose_name_plural = 'Productos'
+
+
 class Metadata(models.Model):
     description = models.CharField(max_length=255)
     keyword = models.TextField()
@@ -70,4 +105,4 @@ class Metadata(models.Model):
         db_table = 'metadata'
         verbose_name = 'Metadata'
         verbose_name_plural = 'Metadata'
-    
+
