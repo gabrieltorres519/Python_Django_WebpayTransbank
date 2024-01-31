@@ -171,9 +171,9 @@ JAZZMIN_SETTINGS = {
     "site_brand": "Ejemplo 1",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
-    "site_logo": "/images/logo.png",
+    "site_logo": "/images/anime_girl_face2.jpg",
     "site_logo_classes": "img-circle",
-    "welcome_sign": format_html("<img src='/assets/images/logo.png'>"),
+    "welcome_sign": format_html("<img src='/assets/images/anime_girl_face2.jpg'>"),
     "copyright": "Desarrollado por <a href='https://www.tamila.cl/' target='_blank'>Tamila</a>",
     "show_sidebar": True,
     "changeform_format": "horizontal_tabs",
