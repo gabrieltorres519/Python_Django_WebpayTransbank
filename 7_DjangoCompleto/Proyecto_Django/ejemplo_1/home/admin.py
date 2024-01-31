@@ -33,7 +33,7 @@ class CategoriaAdmin(admin.ModelAdmin):
 
 
 class ProductoAdmin(admin.ModelAdmin):
-    list_display = ('id', formularios.set_categoria_con_link, 'nombre', 'fecha', 'descripcion')
+    list_display = ('id', formularios.set_categoria_con_link, 'nombre', 'fecha', 'descripcion', 'foto')
     search_fields = ('id', 'nombre')
 
     class Media:
