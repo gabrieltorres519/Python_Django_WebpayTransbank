@@ -27,11 +27,23 @@ class UsersMetadataAdmin(admin.ModelAdmin):
     list_display = ('id', 'telefono', 'genero', formularios.set_user, 'fecha_nacimiento')
 
 
+class CategoriaAdmin(admin.ModelAdmin):
+    list_display = ('id', 'nombre')
+    search_fields = ('id', 'nombre')
+
+
+class ProductoAdmin(admin.ModelAdmin):
+    list_display = ('id', formularios.set_categoria_con_link, 'nombre', 'fecha', 'descripcion')
+    search_fields = ('id', 'nombre')
+
+
 admin.site.register(Estado, EstadoAdmin)
 admin.site.register(Genero, GeneroAdmin)
 admin.site.register(Pais, PaisAdmin)
 admin.site.register(Perfiles, PerfilesAdmin)
 admin.site.register(UsersMetadata, UsersMetadataAdmin)
+admin.site.register(Categoria, CategoriaAdmin)
+admin.site.register(Producto, ProductoAdmin)
 
 admin.site.site_header = 'Backend Ejemplo 1'
 admin.site.index_title = 'Backend Ejemplo 1'
