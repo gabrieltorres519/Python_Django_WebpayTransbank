@@ -36,6 +36,12 @@ class ProductoAdmin(admin.ModelAdmin):
     list_display = ('id', formularios.set_categoria_con_link, 'nombre', 'fecha', 'descripcion')
     search_fields = ('id', 'nombre')
 
+    class Media:
+        js = (
+            '/assets/tiny_mce/tiny_mce.js',
+            '/assets/tiny_mce/textarea.js',
+        )
+
 
 admin.site.register(Estado, EstadoAdmin)
 admin.site.register(Genero, GeneroAdmin)
