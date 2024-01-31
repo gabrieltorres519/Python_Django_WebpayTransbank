@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 from pathlib import Path
 import json
+from django.utils.html import format_html
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -45,6 +46,7 @@ ALLOWED_HOSTS = ['127.0.0.1','dominio.com','www.dominio.com','ip del computador 
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -153,3 +155,27 @@ STATICFILES_DIRS = (
 )
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "cerulean",
+}
+
+JAZZMIN_SETTINGS = {
+    # title of the window (Will default to current_admin_site.site_title if absent or None)
+    "site_title": "Backend Ejemplo 1",
+
+    # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_header": "Backend Ejemplo 1",
+
+    # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_brand": "Ejemplo 1",
+
+    # Logo to use for your site, must be present in static files, used for brand on top left
+    "site_logo": "/images/logo.png",
+    "site_logo_classes": "img-circle",
+    "welcome_sign": format_html("<img src='/assets/images/logo.png'>"),
+    "copyright": "Desarrollado por <a href='https://www.tamila.cl/' target='_blank'>Tamila</a>",
+    "show_sidebar": True,
+    "changeform_format": "horizontal_tabs",
+    "user_avatar": None,
+}
