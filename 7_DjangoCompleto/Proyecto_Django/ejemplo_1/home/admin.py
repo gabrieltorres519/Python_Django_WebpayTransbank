@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+admin.site.site_header = 'Backend Ejemplo 1'
+admin.site.index_title = 'Backend Ejemplo 1'
+admin.site.site_title = 'Backend Ejemplo 1'
