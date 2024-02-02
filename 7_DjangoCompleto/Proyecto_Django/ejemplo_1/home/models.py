@@ -93,6 +93,19 @@ class Categoria(models.Model):
         verbose_name_plural = 'Categorías'
 
 
+class Tracking(models.Model):
+    descripcion = models.TextField()
+    fecha = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        db_table = 'tracking'
+        verbose_name = 'Tracking'
+        verbose_name_plural = 'Trackings'
+
+
 class Producto(models.Model): 
     # Dado que el producto está relacionado con una categoría de producto y si se borra una categoría que esté siendo usada por un producto no se permitirá
     # Obviamente, como en sql, se pueden tener todas las llaves foráneas que se quieran, cuantas tablas relacionadas se necesiten
