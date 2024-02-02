@@ -16,7 +16,7 @@ def moverArchivoProducto(file, id):
 		Producto.objects.filter(pk=id).update(foto=nombre)
 
 def moverArchivoProducto3(file, id):
-    #if existeArchivoMedia(file)==True:
+    #if existeArchivoMedia(file)==True: 
     fecha = datetime.now()
     nombre = f"{datetime.timestamp(fecha)}{os.path.splitext(str(file))[1]}"
     shutil.move(f'{RUTA}ejemplo_1/media/{file}', f'{RUTA2}assets/upload/producto/{nombre}')
