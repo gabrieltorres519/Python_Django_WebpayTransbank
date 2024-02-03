@@ -144,6 +144,14 @@ def producto_change(sender, instance: Producto, **kwargs):
             Tracking.objects.create(descripcion=f"se modificó el producto con el id {instance.id}")
 
 
+@receiver(pre_delete, sender=Producto)
+def producto_delete(sender, instance: Producto, **kwargs):
+    if instance.id is None:
+        pass
+    else:
+        Tracking.objects.create(descripcion=f"se eliminó el producto con el id {instance.id}")
+
+
 class Metadata(models.Model):
     description = models.CharField(max_length=255)
     keyword = models.TextField()
