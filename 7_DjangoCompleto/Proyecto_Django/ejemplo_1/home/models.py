@@ -134,6 +134,15 @@ def producto_save(sender, instance, **kwargs):
         Tracking.objects.create(descripcion=f"se creó el producto con el id {instance.id}")
 
 
+@receiver(pre_save, sender=Producto)
+def producto_change(sender, instance: Producto, **kwargs):
+    if instance.id is None:
+        pass
+    else:
+        previus = Producto.objects.get(id=instance.id)
+        if previus.nombre != instance.nombre:
+            Tracking.objects.create(descripcion=f"se modificó el producto con el id {instance.id}")
+
 
 class Metadata(models.Model):
     description = models.CharField(max_length=255)
