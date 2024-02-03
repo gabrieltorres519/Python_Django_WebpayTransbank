@@ -128,6 +128,13 @@ class Producto(models.Model):
         verbose_name_plural = 'Productos'
 
 
+@receiver(post_save, sender=Producto)
+def producto_save(sender, instance, **kwargs):
+    if kwargs['created']:
+        Tracking.objects.create(descripcion=f"se creó el producto con el id {instance.id}")
+
+
+
 class Metadata(models.Model):
     description = models.CharField(max_length=255)
     keyword = models.TextField()
