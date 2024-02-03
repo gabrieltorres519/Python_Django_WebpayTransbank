@@ -32,6 +32,11 @@ class CategoriaAdmin(admin.ModelAdmin):
     search_fields = ('id', 'nombre')
 
 
+class TrackingAdmin(admin.ModelAdmin):
+    list_display = ('id', 'descripcion', 'fecha')
+    search_fields = ('id', 'descripcion')
+
+
 class ProductoAdmin(admin.ModelAdmin):
     list_display = ('id', formularios.set_categoria_con_link, 'nombre', 'fecha', formularios.foto_producto)
     search_fields = ('id', 'nombre')
@@ -49,6 +54,7 @@ admin.site.register(Pais, PaisAdmin)
 admin.site.register(Perfiles, PerfilesAdmin)
 admin.site.register(UsersMetadata, UsersMetadataAdmin)
 admin.site.register(Categoria, CategoriaAdmin)
+admin.site.register(Tracking, TrackingAdmin)
 admin.site.register(Producto, ProductoAdmin)
 
 admin.site.site_header = 'Backend Ejemplo 1'
