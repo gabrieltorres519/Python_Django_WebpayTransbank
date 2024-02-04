@@ -25,8 +25,9 @@
     <p>
       <h3> Listas </h3>
       {% for lista in listas %}
+      <li> {{ lista }} | {{ forloop.counter }} | {{ forloop.counter0 }} </li>
         {% if forloop.counter|divisibleby:2 %}
-          <li> {{ lista }} | {{ forloop.counter }} | {{ forloop.counter0 }} </li>
+          <i class="fas fa-check-circle"></i>
         {% endif %}
       {% endfor %}
     </p>
