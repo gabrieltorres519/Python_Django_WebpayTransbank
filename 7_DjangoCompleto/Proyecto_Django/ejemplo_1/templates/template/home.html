@@ -12,5 +12,13 @@
     <p> 
       <img src='{% static "upload/producto/" %}{{foto}}' width="100" height="100">
     </p>
+    <p> 
+      <h3> Condicionales </h3>
+      {% if color == "rojo" %}
+        <span  class= "text text-success"> Es rojo </span>
+      {%else%}
+        <span  class= "text text-danger"> No es rojo </span>
+      {% endif %}
+    </p>
 
 {% endblock %}
