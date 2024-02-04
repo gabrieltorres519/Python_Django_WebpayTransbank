@@ -22,4 +22,6 @@ urlpatterns = [
     path('nosotros', include('nosotros.urls'), name='nosotros_urls'),
     path('diseno', include('diseno.urls'), name='diseno_urls'),
     path('template', include('template.urls'), name='template_urls'),
+    path('consultas', include('consultas.urls'), name='consultas_urls'),
+
 ]

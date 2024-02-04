@@ -1,0 +1,26 @@
+{% extends "../layout/frontend.html" %} 
+{% load static%}
+{% block titlegabriel %} Consultas {% endblock %}
+
+{% block content %}
+
+  <main class="container">
+
+    <div class="row">
+      <h2> Consultas </h2>
+      </br>
+      <ul>
+        {% for categoria in categorias %}
+
+        <li>
+          <a href=""> {{categoria.nombre}} </a>
+        </li> 
+
+        {% endfor %}
+      </ul>
+    </div>
+
+  </main><!-- /.container -->
+
+{% endblock  %}
+
