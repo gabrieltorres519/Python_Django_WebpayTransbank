@@ -3,8 +3,10 @@ from django.http import HttpResponse, Http404
 # Create your views here.
 
 def template_inicio(request):
-    # return HttpResponse("Hola mundo")
-    return  render(request, 'template/home.html', {}) # contiene la ruta del template de esa vista y los datos que se quieren renderizar en la vista
+    listas = ["uno","dos","tres"]
+    texto = "<h1> tss </h1>"
+    foto = "1706839318.193531.jpg"
+    return  render(request, 'template/home.html', {'listas': listas, 'texto': texto, 'foto': foto}) # contiene la ruta del template de esa vista y los datos que se quieren renderizar en la vista
 
 
 # En templates/home habrá un archivo por cada función definida aquí,

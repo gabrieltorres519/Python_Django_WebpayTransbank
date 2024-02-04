@@ -1,0 +1,16 @@
+{% extends "layout/frontend.html" %} 
+{% load static%}
+{% block titlegabriel %} Diseños {% endblock %}
+
+{% block content %}
+
+
+  <main role="main" class="container">
+    <h3> Template tags <i class="fas fa-search"></i> </h3>
+    <p> {{texto|upper|safe}} </p>
+    <p> {{texto|safe}} </p>
+    <p> 
+      <img src='{% static "upload/producto/" %}{{foto}}' width="100" height="100">
+    </p>
+
+{% endblock %}
