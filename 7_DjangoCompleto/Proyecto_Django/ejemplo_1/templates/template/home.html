@@ -25,8 +25,10 @@
     <p>
       <h3> Listas </h3>
       {% for lista in listas %}
-        <li> {{ lista }} </li>
-      {% {% endfor %}%}
+        {% if forloop.counter|divisibleby:2 %}
+          <li> {{ lista }} | {{ forloop.counter }} | {{ forloop.counter0 }} </li>
+        {% endif %}
+      {% endfor %}
     </p>
 
 {% endblock %}

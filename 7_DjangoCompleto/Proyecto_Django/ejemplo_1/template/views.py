@@ -3,7 +3,7 @@ from django.http import HttpResponse, Http404
 # Create your views here.
 
 def template_inicio(request):
-    listas = ["uno","dos","tres"]
+    listas = ["uno","dos","tres", "cuatro", "gato", "ave"]
     texto = "<h1> tss </h1>"
     foto = "1706839318.193531.jpg"
     color = "rojo" 
