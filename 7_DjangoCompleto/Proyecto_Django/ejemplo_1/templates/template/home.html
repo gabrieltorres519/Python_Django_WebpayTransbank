@@ -15,10 +15,18 @@
     <p> 
       <h3> Condicionales </h3>
       {% if color == "rojo" %}
-        <span  class= "text text-success"> Es rojo </span>
+        <span  class= "text text-success"> 
+          {{ color|add:" <strong> es la sangre de los araucanos </strong>"|safe }}  
+        </span>
       {%else%}
         <span  class= "text text-danger"> No es rojo </span>
       {% endif %}
+    </p>
+    <p>
+      <h3> Listas </h3>
+      {% for lista in listas %}
+        <li> {{ lista }} </li>
+      {% {% endfor %}%}
     </p>
 
 {% endblock %}
