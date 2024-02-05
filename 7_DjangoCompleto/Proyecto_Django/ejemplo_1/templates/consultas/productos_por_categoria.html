@@ -8,24 +8,52 @@
 
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Library</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Data</li>
+        <li class="breadcrumb-item"><a href="{% url 'home_inicio' %}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'consultas_inicio' %}">Categorias</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Producto de la categoría {{ cat.nombre }}</li>
       </ol>
     </nav>
-    
+
     <div class="row">
-      <h2> Consultas </h2>
-      </br>
-      <ul>
-        {% for categoria in categorias %}
+      <h2> Producto de la categoría {{ cat.nombre }} </h2>
+      <hr>
+        <ul>
+          {% for categoria in categorias %}
 
-        <li>
-          <a href="{% url "consultas_productos_por_categoria" categoria.slug %}"> {{categoria.nombre}} </a>
-        </li> 
+          <li>
+            <a href="{% url "consultas_productos_por_categoria" categoria.slug %}"> {{categoria.nombre}} </a>
+          </li> 
 
-        {% endfor %}
-      </ul>
+          {% endfor %}
+        </ul>
+      </hr>
+      <h3> Listado de productos </h3>
+      <table class="table table-bordered"> 
+        <thead>
+          <tr>
+            <th> ID </th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+            <th>Foto</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for dato in datos %}
+            <tr>
+              <td> {{dato.id}} </td>
+              <td> {{dato.categoria.nombre}} </td>
+              <td> {{dato.nombre}} </td>
+              <td> {{dato.descripcion|safe}} </td>
+              <td>  </td>
+              <td>
+                <img src="{% static "upload/producto/" %}{{dato.foto}}  " width="100" height="100" />
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
 
   </main><!-- /.container -->
