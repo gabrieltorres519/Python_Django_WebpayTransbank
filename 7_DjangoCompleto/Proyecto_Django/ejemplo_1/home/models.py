@@ -116,8 +116,9 @@ class Producto(models.Model):
     fecha = models.DateTimeField(auto_now=True) # Enviando por defecto la fecha actual
     descripcion = models.TextField()
     foto = models.ImageField(upload_to="producto", default="default.jpg") # pip install Pillow Upload_to es el nombre de la carpeta a donde se moverá la imágen ya que esté en el servidor
+    precio = models.PositiveIntegerField(default=0)
     #hora = models.TimeField(auto_now=True)
-    #fecha = models.DateField(auto_now=True)
+    #fecha = models.DateField(auto_now=True) 
 
     def __str__(self):
         return self.nombre
