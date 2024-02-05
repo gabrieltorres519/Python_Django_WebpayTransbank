@@ -1,19 +1,19 @@
 from django.core.paginator import Paginator
 from django.conf import settings
 import os
-import jwt
+# import jwt
 
 
-def getToken(json):
-    token= jwt.encode(json, settings.SECRET_KEY, algorithm='HS256')
-    return token
+# def getToken(json):
+#     token= jwt.encode(json, settings.SECRET_KEY, algorithm='HS256')
+#     return token
 
 
 
 def get_paginacion(total, request):
-	page = request.GET.get('page')
-	paginator = Paginator(total, settings.TOTAL_PAGINAS)
-	datos = paginator.get_page(page)
+	page = request.GET.get('page') # Se recibe el número de página de la utl (querystring)
+	paginator = Paginator(total, settings.TOTAL_PAGINAS) # Al método paginator de Django se le pasan todos los productos y el total de páginas en que se van a paginar
+	datos = paginator.get_page(page) # Obteniendo los datos solo de la página seleccionada
 	numeros=[]
 	if len(datos)>=settings.TOTAL_PAGINAS:
 		for ultima in range(1, datos.paginator.num_pages):
