@@ -1,0 +1,52 @@
+{% extends "../layout/frontend.html" %} 
+{% load static%}
+{% block titlegabriel %} Consultas {% endblock %}
+
+{% block content %}
+
+  <main class="container">
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home_inicio' %}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'consultas_inicio' %}">Categorias</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'consultas_inicio' %}">Productos por categoría</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Producto: {{ producto.nombre }}</li>
+      </ol>
+    </nav>
+
+    <div class="row">
+      <h2> Producto de la categoría {{ cat.nombre }} </h2>
+      <hr>
+        <ul>
+          {% for categoria in categorias %}
+
+          <li>
+            <a href="{% url "consultas_productos_por_categoria" categoria.slug %}"> {{categoria.nombre}} </a>
+          </li> 
+
+          {% endfor %}
+        </ul>
+      </hr>
+      <h3> {{producto.nombre}} ({{producto.categoria.nombre}})</h3>
+      <p> 
+        <img src="{% static "upload/producto/" %}{{producto.foto}} " alt="{{producto.nombre}}" />
+      </p>
+      <hr/>
+      <p> 
+        {{producto.descripcion|safe}}
+      </p>
+      <hr/>
+      <p> 
+        Precio: ${{producto.precio}}
+      </p>
+      <hr/>
+      <p> 
+        Fecha: {{producto.fecha}}
+      </p>
+    </div>
+
+  </main><!-- /.container -->
+
+{% endblock  %}
+

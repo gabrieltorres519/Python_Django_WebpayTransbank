@@ -10,13 +10,23 @@ def consultas_inicio(request):
 def consultas_productos_por_categoria(request, slug):
     try:
         cat = Categoria.objects.filter(slug = slug).get() # Consulta para un solo registro
-        print(cat.id)
     except Categoria.DoesNotExist:
         raise Http404
      
     categorias = Categoria.objects.order_by('nombre').all()
     datos = Producto.objects.filter(categoria_id=cat.id).all()
     return  render(request, 'consultas/productos_por_categoria.html', {'categorias':categorias, 'cat':cat, 'datos':datos}) # contiene la ruta del template de esa vista y los datos que se quieren renderizar en la vista
+
+def consultas_productos_detalle(request, id, slug):
+    try:
+        producto = Producto.objects.filter(slug = slug, id=id).get() # Consulta para un solo registro
+    except Categoria.DoesNotExist:
+        raise Http404
+    
+    categorias = Categoria.objects.order_by('nombre').all()
+    return  render(request, 'consultas/productos_detalle.html', {'categorias':categorias, 'producto':producto}) # contiene la ruta del template de esa vista y los datos que se quieren renderizar en la vista
+
+
 
 # En templates/home habrá un archivo por cada función definida aquí,
 # pues esa función es la encargada de renderizar la vista
