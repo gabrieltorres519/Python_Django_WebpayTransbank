@@ -1,5 +1,6 @@
 {% extends "../layout/frontend.html" %} 
-{% load static%}
+{% load static%} 
+{% load utilidades %}
 {% block titlegabriel %} Consultas {% endblock %}
 
 {% block content %}
@@ -20,6 +21,7 @@
       </ul>
       <hr/>
       <h3> Listado de productos ( Página {{page}} ) </h3>
+      <p> Ejemplo template tag: {{page|ejemploFiltro}} </p>
       <table class="table table-bordered"> 
         <thead>
           <tr>
@@ -38,7 +40,7 @@
             <td>{{dato.categoria.nombre}}</td>
             <td>{{dato.nombre}}</td>
             <td>{{dato.descripcion|safe}}</td>
-            <td>${{dato.precio}}</td>
+            <td>${{dato.precio|numberFormat}}</td>
             <td>
               <img src="{% static "upload/producto/" %}{{dato.foto}}  " width="100" height="100" />
             </td>
