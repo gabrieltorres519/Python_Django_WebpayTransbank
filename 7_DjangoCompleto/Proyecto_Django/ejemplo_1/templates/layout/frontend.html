@@ -1,4 +1,5 @@
 {% load static %}
+{% load utilidades %}
 <html lang="es"><head> 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -6,7 +7,7 @@
     <meta name="author" content="Gabriel Torres">
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-    <title> Gabriel - {% block titlegabriel %} {% endblock %} </title>
+    <title> {{5|getMetadata}} - {% block titlegabriel %} {% endblock %} </title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/blog/">
 
