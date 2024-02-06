@@ -56,7 +56,13 @@
             <li class="page-item"><a lass="page-link" href="?page={{datos.previous_page_number}}" title="Página anterior" >&laquo;&laquo;</a></li>
             {% endif %}
 
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            {% for numero in numeros %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{numero}}" title="Página {{numero}}">
+                {{ numero }}
+              </a>
+            </li>
+            {% endfor %}
 
             {% if datos.has_next %}
             <li class="page-item"><a class="page-link" href="?page={{datos.next_page_number}}" title="Página siguiente" >&raquo;&raquo;</a></li>
