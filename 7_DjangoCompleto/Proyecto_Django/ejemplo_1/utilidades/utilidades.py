@@ -20,7 +20,7 @@ def get_paginacion(total, request):
 			numeros.append(ultima)
 		numeros.append(ultima+1)
 
-	return [datos, numeros, page]
+	return [datos, numeros, int(page)]
 
 
 def getExtension(file):
