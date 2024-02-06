@@ -1,0 +1,22 @@
+{% extends "../layout/frontend.html" %} 
+{% load static%}
+{% block titlegabriel %} Simple {% endblock %}
+
+{% block content %}
+
+  <main>
+
+    <form>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Email address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+      </div>
+    </form>
+
+
+  </main><!-- /.container -->
+
+{% endblock  %}
+
+{% comment %} Archivos como éste contendrán secciones que se van a incrustar en el 
+archivo principal layout/frontend.html {% endcomment %}
