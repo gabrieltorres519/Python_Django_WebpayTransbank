@@ -7,8 +7,16 @@
 
   <main class="container">
 
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home_inicio' %}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'consultas_inicio' %}">Consultas</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Resultados para el término <strong>{{b}} </strong> </li>
+      </ol>
+    </nav>
+
     <div class="row">
-      <h2> Consultas </h2>
+      <h2> Resultados para el término <strong>{{b}} </strong> </h2>
       </br>
       <ul>
         {% for categoria in categorias %}

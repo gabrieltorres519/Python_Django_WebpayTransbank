@@ -10,6 +10,16 @@ def consultas_inicio(request):
     paginar = utilidades.get_paginacion(total,request)
     return  render(request, 'consultas/home.html', {'categorias':categorias, 'total': total, 'datos': paginar[0], 'numeros': paginar[1], 'page': paginar[2] }) # contiene la ruta del template de esa vista y los datos que se quieren renderizar en la vista
 
+def consultas_buscador(request):
+	if not request.GET.get('b'):
+		b=''
+	else:
+		b=request.GET.get('b')
+	categorias = Categoria.objects.order_by('nombre').all()
+	total = Producto.objects.filter(nombre__icontains=b).order_by('-id').all()
+	paginar = utilidades.get_paginacion(total, request)
+	return render(request, 'consultas/buscador.html', {'categorias':categorias, 'total':total, 'datos':paginar[0], 'numeros':paginar[1], 'page':paginar[2], 'b': b})
+
 def consultas_productos_por_categoria(request, slug):
     try:
         cat = Categoria.objects.filter(slug = slug).get() # Consulta para un solo registro
