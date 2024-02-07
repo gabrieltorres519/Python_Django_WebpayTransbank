@@ -6,6 +6,8 @@
 
   <main>
 
+    {% include "layout/flash.html" %}
+
     <form name="form" method="post" action="{% url 'formularios_simple' %}">
       {% csrf_token %} 
       <div class="form-group">
