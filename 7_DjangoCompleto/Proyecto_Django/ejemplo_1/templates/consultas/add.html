@@ -1,0 +1,55 @@
+{% extends '../layout/frontend.html' %} 
+{% load static %} {% load utilidades %}
+{% block titlecesar %}Consultas{% endblock %}
+
+{% block content %}
+
+
+<main class="container">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'home_inicio' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'consultas_inicio' %}">Consultas</a></li>
+   
+    <li class="breadcrumb-item active" aria-current="page">Crear producto</li>
+  </ol>
+</nav>
+   <div class="row">
+    {% include 'layout/flash.html' %}
+     <h2>Crear producto</h2>
+     
+     <form name="form" method="POST" action="{% url 'consultas_add' %}" enctype="multipart/form-data">
+       
+       {% csrf_token %}
+       <input type="hidden" name="foto" id="foto" />
+
+      <div class="mb-3">
+        <label for="categoria" class="form-label">Categoría</label>
+        {{form.categoria}}
+      </div>
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        {{form.nombre}}
+      </div>
+      <div class="mb-3">
+        <label for="precio" class="form-label">Precio</label>
+        {{form.precio}}
+      </div>
+      <div class="mb-3">
+        <label for="descripcion" class="form-label">Descripción</label>
+        {{form.descripcion}}
+      </div>
+      <div class="mb-3">
+        <label for="file" class="form-label">Foto</label>
+        {{form.file}}
+      </div>
+      <hr />
+      <a href="javascript:void(0);" class="btn btn-success" onclick="crear_producto();">
+        Enviar
+      </a>
+     </form>
+     
+   </div>
+
+</main>
+{% endblock %}

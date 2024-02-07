@@ -23,6 +23,10 @@
       <h3> Listado de productos ( Página {{page}} ) </h3>
       <p> Ejemplo template tag: {{page|ejemploFiltro}} </p>
       <hr/>
+      <p style="text-align: right;">
+        <a href="{% url 'consultas_add' %}" class="btn btn-success" >Crear</a>
+      </p>
+      <hr/>
       <p>
         <form action="" method="GET">
           <div class="input-group mb-3">
