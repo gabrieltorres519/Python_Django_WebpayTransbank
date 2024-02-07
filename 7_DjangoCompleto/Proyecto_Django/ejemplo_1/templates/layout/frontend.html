@@ -91,7 +91,7 @@
     <script src="{% static 'js/jquery-2.0.0.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.js' %}"> </script> 
     <script src="{% static 'js/jquery.alerts.min.js' %}"></script>
-    <script src="{% static 'js/funciones.js' %}"></script>
+    <script src="{% static 'js/funciones.js' %}?id={{csrf_token}}"></script>
 
     {% block bloque_js %} {% endblock %} 
 
