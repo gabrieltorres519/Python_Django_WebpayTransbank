@@ -106,6 +106,18 @@ class Tracking(models.Model):
         verbose_name_plural = 'Trackings'
 
 
+class Atributo(models.Model):
+    nombre = models.CharField(max_length=100, null=True)
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        db_table = 'atributo'
+        verbose_name = 'Atributo'
+        verbose_name_plural = 'Atributos'
+
+
 class Producto(models.Model): 
     # Dado que el producto está relacionado con una categoría de producto y si se borra una categoría que esté siendo usada por un producto no se permitirá
     # Obviamente, como en sql, se pueden tener todas las llaves foráneas que se quieran, cuantas tablas relacionadas se necesiten
@@ -151,6 +163,19 @@ def producto_delete(sender, instance: Producto, **kwargs):
         pass
     else:
         Tracking.objects.create(descripcion=f"se eliminó el producto con el id {instance.id}")
+
+
+class ProdcutoAtributo(models.Model):
+    atributo = models.ForeignKey(Atributo, models.DO_NOTHING)
+    producto = models.ForeignKey(Producto, models.DO_NOTHING)
+
+    def __str__(self):
+        return self.atributo.nombre
+
+    class Meta:
+        db_table = 'producto_atributo'
+        verbose_name = 'Producto Atributo'
+        verbose_name_plural = 'Productos Atributos'
 
 
 class Metadata(models.Model):
