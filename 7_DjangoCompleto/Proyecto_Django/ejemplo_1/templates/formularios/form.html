@@ -6,23 +6,28 @@
 
   <main>
 
-    <h3>Formulario Simple </h3>
-    
+    <h3>Formulario Form (clases) </h3>
+
     {% include "layout/flash.html" %}
 
-    <form name="form" method="post" action="{% url 'formularios_simple' %}">
+    <form name="form" method="post" action="{% url 'formularios_form' %}">
       {% csrf_token %} 
       <div class="form-group">
         <label for="nombre">Nombre</label>
-        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" />
+        {{form.nombre}}
       </div>
       <div class="form-group">
         <label for="correo">Email</label>
-        <input type="email" class="form-control" id="correo" name="correo" placeholder="E-mail" />
+        {{form.correo}}
+        {% if form.errors %}  {{form.errors.correo}} {%endif%}
+      </div>
+      <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        {{form.telefono}}
       </div>
       <div class="form-group">
         <label for="mensaje">Mensaje</label>
-        <textarea class="form-control" id="mensaje" name="mensaje" rows="3" placeholder="Escriba su mensaje aquí" ></textarea>
+        {{form.mensaje}}
       </div>
       <hr/>
       <a href="javascript:void(0);" class="btn btn-success" onclick="document.form.submit();" >
