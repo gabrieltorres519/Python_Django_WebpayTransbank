@@ -10,7 +10,7 @@ class Formulario_producto(forms.Form):
 	descripcion = forms.CharField(required=True, widget=forms.Textarea(attrs={'rows': 3, 'cols': 100, 'class': 'form-control', 'placeholder': 'Descripción', 'id': 'mensaje', 'autocomplete':'off'}))
 	file = forms.CharField(required=False, widget=forms.TextInput(attrs={ 'type': 'file', 'id':'formFile', 'class': 'form-control'}))
 
-
-# class Formulario_atributo_producto(forms.Form):
-# 	atributos = forms.CharField(widget=forms.CheckboxSelectMultiple(attrs={'class': 'f  ss'}, choices=Atributo.objects.all().values_list('id', 'nombre'))
-#      )
+class Formulario_atributo_producto(forms.Form):
+	atributos = forms.CharField(widget=forms.CheckboxSelectMultiple(attrs={'class': 'f  ss'}, choices=Atributo.objects.all().values_list('id', 'nombre'))
+     )
+	

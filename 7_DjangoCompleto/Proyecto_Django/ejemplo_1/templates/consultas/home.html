@@ -48,6 +48,7 @@
             <th>Descripción</th>
             <th>Precio</th>
             <th>Fecha</th>
+            <th>Atributos</th>
             <th>Foto</th>
             <th>Acciones</th>
           </tr>
@@ -60,6 +61,9 @@
             <td>{{dato.descripcion|safe}}</td>
             <td>${{dato.precio|numberFormat}}</td>
             <td>{{ dato.fecha|invierteFecha }}</td>
+            <td>
+              <a href="{% url 'consultas_add_atributos' dato.id %}" > Atributos </a>
+            </td>
             <td>
               <img src="{% static "upload/producto/" %}{{dato.foto}}  " width="100" height="100" />
             </td>

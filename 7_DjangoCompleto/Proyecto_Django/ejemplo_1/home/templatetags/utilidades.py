@@ -5,6 +5,15 @@ from home.models import *
 register = template.Library()
 
 #######Métodos de bases de datos
+@register.filter(name='existeAtributoEnProducto')
+def existeAtributoEnProducto(producto_id, atributo_id):
+    datos = ProdcutoAtributo.objects.filter(producto_id=producto_id).filter(atributo_id=atributo_id).count()
+    if datos ==0:
+        return ''
+    else:
+        return 'checked=true'
+    
+    
 @register.filter(name='getMetadata')
 def getMetadata(n):
     datos=Metadata.objects.get()

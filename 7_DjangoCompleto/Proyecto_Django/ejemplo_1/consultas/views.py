@@ -17,6 +17,30 @@ def consultas_inicio(request):
     paginar = utilidades.get_paginacion(total,request)
     return  render(request, 'consultas/home.html', {'categorias':categorias, 'total': total, 'datos': paginar[0], 'numeros': paginar[1], 'page': paginar[2] }) # contiene la ruta del template de esa vista y los datos que se quieren renderizar en la vista
 
+def consultas_add_atributos(request, id):
+	try:
+		producto = Producto.objects.get(pk=id)
+	except Producto.DoesNotExist:
+		raise Http404
+	if request.method =='POST':
+		form = Formulario_atributo_producto(request.POST)
+		if form.is_valid():
+			datosForm = form.cleaned_data
+			modelos_checks = eval(datosForm['atributos'])
+			ProdcutoAtributo.objects.filter(producto_id=id).delete()
+			for modelos_check in modelos_checks:
+				guardar= ProdcutoAtributo()
+				guardar.producto_id=id
+				guardar.atributo_id=modelos_check
+				guardar.save()
+			messages.add_message(request, messages.SUCCESS, f"Se creó el registro exitosamente")
+			return HttpResponseRedirect(f'/consultas/add-atributos/{id}')
+	else:
+		form = Formulario_atributo_producto( )
+	atributos = Atributo.objects.all()
+	return render(request, 'consultas/add_atributos.html', {'form':form, 'producto': producto, 'atributos': atributos})
+
+
 def consultas_add(request):
 	if request.method =='POST':
 		form=Formulario_producto(request.POST, request.FILES)

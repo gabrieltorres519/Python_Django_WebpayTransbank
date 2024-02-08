@@ -1,0 +1,42 @@
+{% extends '../layout/frontend.html' %} 
+{% load static %} {% load utilidades %}
+{% block titlecesar %}Consultas{% endblock %}
+
+{% block content %}
+
+
+<main class="container">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'home_inicio' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'consultas_inicio' %}">Consultas</a></li>
+   
+    <li class="breadcrumb-item active" aria-current="page">Crear atributo producto</li>
+  </ol>
+</nav>
+   <div class="row">
+    {% include 'layout/flash.html' %}
+     <h2>Crear atributo producto</h2>
+     
+     <form name="form" method="POST" action="{% url 'consultas_add_atributos' producto.id %}">
+       
+       {% csrf_token %}
+      <div class="row">
+        <ul class="list-group">
+          {% for atributo in atributos %}
+          <li>
+            <input type="checkbox" name="atributos" value="{{atributo.id}}" id="atributo_{{ forloop.counter0 }}" {{producto.id|existeAtributoEnProducto:atributo.id}} /> {{atributo.nombre}}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>    
+      <hr />
+      <a href="javascript:void(0);" class="btn btn-success" onclick="set_atributos();">
+        Enviar
+      </a>
+     </form>
+     
+   </div>
+
+</main>
+{% endblock %}
