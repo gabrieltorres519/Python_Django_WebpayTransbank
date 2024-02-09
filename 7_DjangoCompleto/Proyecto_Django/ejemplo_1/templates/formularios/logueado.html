@@ -1,0 +1,27 @@
+{% extends '../layout/frontend.html' %} 
+{% load static %}
+{% block titlecesar %}Formularios{% endblock %}
+
+{% block content %}
+
+
+<main class="container">
+  <div class="row">
+    <h3>Logueado o logueada</h3>
+    <!--set flash-->
+    {% include 'layout/flash.html' %}
+    <!--/set flash-->
+    <p>
+      {% if user.is_authenticated %} 
+        hola {{request.user.first_name}} {{request.user.last_name}}
+        <br />
+        {{request.session.users_metadata_id}}
+      {% endif %}
+    </p>
+    <p>
+      <a href="javascript:void(0);" onclick="salir('{% url 'formularios_logueado_salir' %}');">Salir</a>
+    </p>
+    
+  </div>
+</main>
+{% endblock %}

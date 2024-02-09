@@ -54,3 +54,14 @@ def formularios_login(request):
 
 def formularios_logueado(request):
 	return render(request, 'formularios/logueado.html', {})
+
+def formularios_logueado_salir(request):
+	logout(request)
+	###sólo si creaste variables de sesión
+	try:
+		del request.session['users_metadata_id'] 
+	except KeyError:
+		pass
+	##ésto si va si o si para que no te enredes, sonríe que es gratis
+	messages.add_message(request, messages.WARNING, f'Se cerró la sesión exitosamente.')
+	return HttpResponseRedirect('/formularios/login')
