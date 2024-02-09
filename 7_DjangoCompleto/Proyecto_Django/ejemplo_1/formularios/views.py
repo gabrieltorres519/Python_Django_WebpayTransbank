@@ -3,6 +3,7 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.contrib import messages 
 from home.models import *
 from .forms import *
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 def formularios_inicio(request):
@@ -33,3 +34,23 @@ def formularios_simple(request):
         return HttpResponseRedirect(f"/formularios/simple") # Para evitar que la petición se mantenga guardada en la vista
     return render(request, 'formularios/simple.html',{})
 
+
+def formularios_login(request):
+	form = Formulario_Login(request.POST or None)
+	if request.method=='POST':
+		if form.is_valid:
+			#data = form.cleaned_data
+			user =authenticate(request, username=request.POST['correo'], password=request.POST['password'])
+			if user is not None:
+				login(request, user)
+				usersMetadata=UsersMetadata.objects.filter(user_id=request.user.id).get()
+				request.session['users_metadata_id']=usersMetadata.id
+				return HttpResponseRedirect('/formularios/logueado')
+			else:
+				messages.add_message(request, messages.WARNING, f'Los datos ingresados no son correctos, por favor vuelva a intentar.')
+				return HttpResponseRedirect('/formularios/login')
+	return render(request, 'formularios/login.html', {'form': form})
+
+
+def formularios_logueado(request):
+	return render(request, 'formularios/logueado.html', {})

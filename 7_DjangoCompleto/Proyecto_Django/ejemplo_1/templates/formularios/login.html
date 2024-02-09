@@ -1,0 +1,33 @@
+{% extends '../layout/frontend.html' %} 
+{% load static %}
+{% block titlecesar %}Formularios{% endblock %}
+
+{% block content %}
+
+
+<main class="container">
+  <div class="row">
+    <h3>Login</h3>
+    <!--set flash-->
+    {% include 'layout/flash.html' %}
+    <!--/set flash-->
+    <form name="form" method="post" action="{% url 'formularios_login' %}">
+      {% csrf_token %}
+       
+      <div class="mb-3">
+        <label for="correo" class="form-label">E-Mail</label>
+        {{form.correo}}
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        {{form.password}}
+      </div>
+      
+      <hr />
+      <a href="javascript:void(0);" class="btn btn-success" onclick="document.form.submit();">
+        Enviar
+      </a>
+    </form>
+  </div>
+</main>
+{% endblock %}

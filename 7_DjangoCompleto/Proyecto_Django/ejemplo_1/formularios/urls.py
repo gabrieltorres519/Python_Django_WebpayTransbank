@@ -5,5 +5,7 @@ urlpatterns = [
     path('', formularios_inicio, name='formularios_inicio'),
     path('/simple', formularios_simple, name='formularios_simple'),
     path('/form', formularios_form, name='formularios_form'),
+    path('/login', formularios_login, name='formularios_login'),
+    path('/logueado', formularios_logueado, name='formularios_logueado'),
 ]
 
