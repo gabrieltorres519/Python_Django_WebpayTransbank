@@ -4,6 +4,7 @@ from django.contrib import messages
 from home.models import *
 from .forms import *
 from django.contrib.auth import authenticate, login, logout
+from formularios.decorators import logueada
 
 # Create your views here.
 def formularios_inicio(request):
@@ -51,7 +52,7 @@ def formularios_login(request):
 				return HttpResponseRedirect('/formularios/login')
 	return render(request, 'formularios/login.html', {'form': form})
 
-
+@logueada()
 def formularios_logueado(request):
 	return render(request, 'formularios/logueado.html', {})
 
