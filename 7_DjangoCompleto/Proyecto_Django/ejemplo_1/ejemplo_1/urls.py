@@ -24,5 +24,5 @@ urlpatterns = [
     path('template', include('template.urls'), name='template_urls'),
     path('consultas', include('consultas.urls'), name='consultas_urls'),
     path('formularios', include('formularios.urls'), name='formularios_urls'),
-
+    path('reportes', include('reportes.urls'), name='reportes_urls'),
 ]
