@@ -10,6 +10,9 @@ def reportes_inicio(request):
     # return HttpResponse("Hola mundo")
     return  render(request, 'reportes/home.html', {}) # contiene la ruta del template de esa vista y los datos que se quieren renderizar en la vista
 
+def reportes_importar_excel(request):
+    # return HttpResponse("Hola mundo")
+    return  render(request, 'reportes/importar_excel.html', {}) 
 
 def reportes_pdf(request):
     ruta = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
