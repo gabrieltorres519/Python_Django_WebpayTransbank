@@ -33,3 +33,11 @@ class Class_TestParametro(APIView):
 	def get(self, request, id):
 		
 		return Response({"mensaje": f"id={id}"})
+     
+     
+class Class_TestRequest(APIView):
+	
+	#pasar parámetros vía json request
+	def post(self, request):
+		data=request.data
+		return Response({"manzana": data.get('correo')})
