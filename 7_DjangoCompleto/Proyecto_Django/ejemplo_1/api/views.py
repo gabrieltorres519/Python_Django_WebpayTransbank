@@ -5,6 +5,8 @@ from utilidades import utilidades
 from home.models import *
 from django.contrib.auth import authenticate, login
 import time
+from jose import jwt
+from django.conf import settings
 
 class Class_Test(APIView):
     
@@ -66,3 +68,28 @@ class Class_TestLogin(APIView):
 			return Response(data_json)
 		else:
 			return Response({"mensaje":"Los datos ingresados no son correctos"})
+		
+
+class Class_TestJwt(APIView):
+	
+	# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiY2FtcG8iOiJob2xhIiwidGltZSI6MTcwNzc2ODIzMX0.BGf4wmZaupipBMKbdtM3srKEvRlZSjBteS1dBw38-PE
+	def get(self, request):
+		headers = request.headers.get('Authorization')
+		if not headers:
+			res = HttpResponse("Unauthorized")
+			res.status_code = 401
+			return res
+
+		try:
+			resuelto = jwt.decode(headers, settings.SECRET_KEY, algorithms=['HS256'])
+		except Exception as e:
+			res = HttpResponse("Unauthorized")
+			res.status_code=401
+			return res
+		print("El campo resuelto es: " + resuelto["campo"])
+		if not resuelto['campo']=="hola":
+			res = HttpResponse("Unauthorized")
+			res.status_code=401
+			return res
+		data=request.data
+		return Response({"manzana": resuelto})
