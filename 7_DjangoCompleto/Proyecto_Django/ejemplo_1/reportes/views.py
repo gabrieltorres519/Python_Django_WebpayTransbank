@@ -6,6 +6,7 @@ from weasyprint import HTML # pip intall WeasyPrint
 import os
 from .forms import *
 from django.core.files.storage import FileSystemStorage
+import xlrd # pip install xlrd | pip install django excel
 
 # Create your views here.
 def reportes_inicio(request):
@@ -21,6 +22,18 @@ def reportes_importar_excel(request):
             fs = FileSystemStorage()
             filename=fs.save(f"excel/archivo.xlsx",request.FILES['file'])
             upload_file_url=fs.url(filename)
+
+            #leer el archivo
+            documento=xlrd.open_workbook(settings.BASE_DIR + "/media/excel/archivo.xls")
+            datos = documento.sheet_by_index(0)
+			#guardar el la bd la información
+            for i in range(datos.nrows):
+                if i>=1:
+					#repr(datos.cell_value(i, 0)).replace("'","")
+                    Nombres.objects.create(numero=repr(datos.cell_value(i, 0)).replace("'",""), nombre=repr(datos.cell_value(i, 1)).replace("'",""))
+            remove(settings.BASE_DIR+'/media/excel/archivo.xls')
+        messages.add_message(request, messages.SUCCESS, f"El excel se importó exitosamente")
+        return HttpResponseRedirect(f"/reportes/importar-excel")
     else:
         form = Formulario_importar_excel()
 

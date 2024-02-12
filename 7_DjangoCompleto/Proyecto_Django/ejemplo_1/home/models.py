@@ -106,6 +106,19 @@ class Tracking(models.Model):
         verbose_name_plural = 'Trackings'
 
 
+class Nombres(models.Model):
+    nombre = models.CharField(max_length=100, null=True)
+    numero = models.CharField(max_length=100, null=True)
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        db_table = 'nombres'
+        verbose_name = 'Nombre'
+        verbose_name_plural = 'Nombres'
+
+
 class Atributo(models.Model):
     nombre = models.CharField(max_length=100, null=True)
 
