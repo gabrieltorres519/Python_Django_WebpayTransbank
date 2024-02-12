@@ -7,4 +7,21 @@ class Class_Test(APIView):
     # Petición vía GET
     def get(self, request):
         #return Response({"mensaje": "Hola desde mi API"}) #envío de JSON
-        return HttpResponse("Datos de respuesta")
+        #res =HttpResponse("Datos de respuesta")
+        #res.status_code=401
+		#return res
+        return Response({"mensaje": "hola desde mi api con ñandú"})
+    
+    def post(self, request):
+
+        return Response({"mensaje": "respuesta post"})
+
+
+    def put(self, request):
+
+        return Response({"mensaje": "respuesta put"})
+
+
+    def delete(self, request):
+
+        return Response({"mensaje": "respuesta delete"})
