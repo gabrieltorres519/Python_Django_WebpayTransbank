@@ -93,3 +93,29 @@ class Class_TestJwt(APIView):
 			return res
 		data=request.data
 		return Response({"manzana": resuelto})
+	
+
+class Class_TestCrearRegistros(APIView):
+	
+	
+	def post(self, request):
+		headers = request.headers.get('Authorization')
+		if not headers:
+			res = HttpResponse("Unauthorized")
+			res.status_code = 401
+			return res
+
+		try:
+			resuelto = jwt.decode(headers, settings.SECRET_KEY, algorithms=['HS256'])
+		except Exception as e:
+			res = HttpResponse("Unauthorized")
+			res.status_code=401
+			return res
+		
+		if not resuelto['campo']=="hola":
+			res = HttpResponse("Unauthorized")
+			res.status_code=401
+			return res
+		data=request.data
+		cat=Categoria.objects.create(nombre=data['nombre'])
+		return Response({"mensaje": f"se creó la categoría {cat.id}"})
