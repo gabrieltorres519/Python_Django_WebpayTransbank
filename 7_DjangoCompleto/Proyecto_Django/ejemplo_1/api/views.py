@@ -3,4 +3,7 @@ from rest_framework.response import Response
 
 
 class Class_Test(APIView):
-    pass
+    
+    # Petición vía GET
+    def get(self, request):
+        return Response({"mensaje": "Hola desde mi API"})
