@@ -1,0 +1,17 @@
+{% extends '../layout/frontend.html' %} 
+{% load static %}
+{% block titlecesar %}Mi título dinámico{% endblock %}
+
+{% block content %}
+
+
+<main class="container">
+  <div class="row">
+    <h3>Exportar a excel</h3>
+    <p>
+      <a href="{% url 'reportes_exportar_excel_ejecutar' %}" class="btn btn-success">Excel</a>
+    </p>
+  </div>
+
+</main>
+{% endblock %}

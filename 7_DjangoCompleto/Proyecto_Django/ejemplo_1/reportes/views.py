@@ -9,13 +9,26 @@ import os
 from os import remove
 from .forms import *
 from django.core.files.storage import FileSystemStorage
-import xlrd # pip install xlrd | pip install django excel
+import xlrd # pip install xlrd | pip install django-excel
 from openpyxl import load_workbook # pip install openpyxl
+import django_excel as excel
 
 # Create your views here.
 def reportes_inicio(request):
     # return HttpResponse("Hola mundo")
     return  render(request, 'reportes/home.html', {}) # contiene la ruta del template de esa vista y los datos que se quieren renderizar en la vista
+
+def reportes_exportar_excel(request):
+	return render(request, 'reportes/exportar_excel.html', {})
+
+def reportes_exportar_excel_ejecutar(request):
+	export = []
+	export.append(['ID', 'NOMBRE', 'NÚMERO'])
+	datos = Nombres.objects.all()
+	for dato in datos:
+		export.append([dato.id, dato.nombre, dato.numero])
+	sheet = excel.pe.Sheet(export)
+	return excel.make_response(sheet, "csv", file_name="ejemplo_de_excel.csv")
 
 def reportes_importar_txt(request):
 	if request.method =='POST':
