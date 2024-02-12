@@ -1,12 +1,12 @@
 from django.core.paginator import Paginator
 from django.conf import settings
 import os
-# import jwt
+import jwt
 
 
-# def getToken(json):
-#     token= jwt.encode(json, settings.SECRET_KEY, algorithm='HS256')
-#     return token
+def getToken(json):
+    token= jwt.encode(json, settings.SECRET_KEY, algorithm='HS256')
+    return token
 
 
 
