@@ -135,9 +135,9 @@ class Class_TestSerializable(APIView):
     }
 	"""
 	
-	# def post(self, request):#crear categoría
-	# 	datos_json = CategoriaSerializer(data=request.data)
-	# 	if datos_json.is_valid():
-	# 		datos_json.save()
-	# 		return Response(datos_json.data)
-	# 	return Response(datos_json.errors, status=400)
+	def post(self, request):#crear categoría
+		datos_json = CategoriaSerializer(data=request.data)
+		if datos_json.is_valid():
+			datos_json.save()
+			return Response(datos_json.data)
+		return Response(datos_json.errors, status=400)
