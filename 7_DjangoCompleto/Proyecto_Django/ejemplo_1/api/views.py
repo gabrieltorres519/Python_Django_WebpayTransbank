@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate, login
 import time
 from jose import jwt
 from django.conf import settings
+from .serializers import *
 
 class Class_Test(APIView):
     
@@ -119,3 +120,24 @@ class Class_TestCrearRegistros(APIView):
 		data=request.data
 		cat=Categoria.objects.create(nombre=data['nombre'])
 		return Response({"mensaje": f"se creó la categoría {cat.id}"})
+	
+
+class Class_TestSerializable(APIView):
+	
+	def get(self, request):
+		datos = Categoria.objects.all()
+		datos_json = CategoriaSerializer(datos, many=True)
+		return Response(datos_json.data)
+
+	"""
+	request: {
+        "nombre":"Categoría desde python"
+    }
+	"""
+	
+	# def post(self, request):#crear categoría
+	# 	datos_json = CategoriaSerializer(data=request.data)
+	# 	if datos_json.is_valid():
+	# 		datos_json.save()
+	# 		return Response(datos_json.data)
+	# 	return Response(datos_json.errors, status=400)
