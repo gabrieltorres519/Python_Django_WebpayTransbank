@@ -1,0 +1,29 @@
+{% extends '../layout/frontend.html' %} 
+{% load static %}
+{% block titlecesar %}Mi título dinámico{% endblock %}
+
+{% block content %}
+
+
+<main class="container">
+  <div class="row">
+    {% include 'layout/flash.html' %}
+    <h3>Importar txt</h3>
+    <p> <a href="{% static 'excel/ejemplo.xls' %}">archivo de ejemplo</a> </p>
+      <form method="post" action="{% url 'reportes_importar_txt' %}" name="form" enctype="multipart/form-data">
+        
+        <p>
+          <label for="archivo">
+            <!--<input type="file" name="file" />-->
+            {{form.file}}
+          </label>
+        </p>
+          <hr /> 
+          {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Enviar</button>
+      </form>
+    
+  </div>
+
+</main>
+{% endblock %}

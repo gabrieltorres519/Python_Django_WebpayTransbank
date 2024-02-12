@@ -6,6 +6,7 @@ from django.conf import settings
 from django.template.loader import render_to_string
 from weasyprint import HTML # pip intall WeasyPrint
 import os
+from os import remove
 from .forms import *
 from django.core.files.storage import FileSystemStorage
 import xlrd # pip install xlrd | pip install django excel
@@ -16,31 +17,28 @@ def reportes_inicio(request):
     # return HttpResponse("Hola mundo")
     return  render(request, 'reportes/home.html', {}) # contiene la ruta del template de esa vista y los datos que se quieren renderizar en la vista
 
-# def reportes_importar_excel(request):
-#     # return HttpResponse("Hola mundo")
-#     if request.method == 'POST':
-#         form = Formulario_importar_excel(request.POST,request.FILES)
-#         if form.is_valid():
-#             datos = form.cleaned_data
-#             fs = FileSystemStorage()
-#             filename=fs.save(f"excel/archivo.xls",request.FILES['file'])
-#             upload_file_url=fs.url(filename)
+def reportes_importar_txt(request):
+	if request.method =='POST':
+		form = Formulario_importar_txt(request.POST, request.FILES)
+		if form.is_valid():
+			datos = form.cleaned_data
+			#guardamos el archivo
+			myfile = request.FILES['file']
+			fs=FileSystemStorage()
+			filename=fs.save(f"txt/archivo.txt", myfile)
+			uploaded_file_url=fs.url(filename)
 
-#             #leer el archivo
-#             documento=xlrd.open_workbook(settings.BASE_DIR + "/media/excel/archivo.xls")
-#             datos = documento.sheet_by_index(0)
-# 			#guardar el la bd la información
-#             for i in range(datos.nrows):
-#                 if i>=1:
-# 					#repr(datos.cell_value(i, 0)).replace("'","")
-#                     Nombres.objects.create(numero=repr(datos.cell_value(i, 0)).replace("'",""), nombre=repr(datos.cell_value(i, 1)).replace("'",""))
-#             remove(settings.BASE_DIR+'/media/excel/archivo.xls')
-#         messages.add_message(request, messages.SUCCESS, f"El excel se importó exitosamente")
-#         return HttpResponseRedirect(f"/reportes/importar-excel")
-#     else:
-#         form = Formulario_importar_excel()
+			fichero = open(settings.BASE_DIR+'/media/txt/archivo.txt')
+			lineas = fichero.readlines()
+			for linea in lineas:
+				Tracking.objects.create(descripcion=linea)
+			remove(settings.BASE_DIR+'/media/txt/archivo.txt')
+			messages.add_message(request, messages.SUCCESS, f"El txt se importó exitosamente")
+			return HttpResponseRedirect(f"/reportes/importar-txt")
 
-#     return  render(request, 'reportes/importar_excel.html', {'form':form}) 
+	else:
+		form=Formulario_importar_txt()
+	return render(request, 'reportes/importar-txt.html', {'form':form})
 
 def reportes_importar_excel(request):
     if request.method == 'POST':
