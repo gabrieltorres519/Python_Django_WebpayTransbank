@@ -25,3 +25,11 @@ class Class_Test(APIView):
     def delete(self, request):
 
         return Response({"mensaje": "respuesta delete"})
+
+
+class Class_TestParametro(APIView):
+	
+	
+	def get(self, request, id):
+		
+		return Response({"mensaje": f"id={id}"})
