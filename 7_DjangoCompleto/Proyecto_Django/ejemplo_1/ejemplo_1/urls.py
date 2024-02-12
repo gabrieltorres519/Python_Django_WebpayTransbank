@@ -25,4 +25,5 @@ urlpatterns = [
     path('consultas', include('consultas.urls'), name='consultas_urls'),
     path('formularios', include('formularios.urls'), name='formularios_urls'),
     path('reportes', include('reportes.urls'), name='reportes_urls'),
+    path('api/v1', include('api.urls'), name='api_urls'),
 ]
