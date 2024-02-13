@@ -1,0 +1,18 @@
+{% extends '../layout/frontend.html' %} 
+{% load static %}
+{% block titlecesar %}Mi título dinámico{% endblock %}
+
+{% block content %}
+
+
+<main class="container">
+  <div class="row">
+    <h3>Cliente API</h3>
+    <ul>
+      <li>Status {{response.status_code}}</li>
+      <li>Response {{response.text}}</li>
+    </ul>
+  </div>
+
+</main>
+{% endblock %}

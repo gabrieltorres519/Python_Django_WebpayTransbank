@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from home.models import *
+import requests
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.contrib import messages
 from django.conf import settings
@@ -17,6 +18,11 @@ import django_excel as excel
 def reportes_inicio(request):
     # return HttpResponse("Hola mundo")
     return  render(request, 'reportes/home.html', {}) # contiene la ruta del template de esa vista y los datos que se quieren renderizar en la vista
+
+def reportes_cliente_api(request):
+	url = "http://127.0.0.1:8000/api/v1/test-request"
+	response=requests.post(url=url, json={"correo":"info@tamila.cl"})
+	return render(request, 'reportes/cliente_api.html', {'response':response})
 
 def reportes_exportar_excel(request):
 	return render(request, 'reportes/exportar_excel.html', {})
