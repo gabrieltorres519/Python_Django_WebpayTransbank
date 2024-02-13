@@ -12,5 +12,5 @@ urlpatterns = [
 	path('/test-jwt', Class_TestJwt.as_view(), name="api_test_jwt"),
 	path('/test-crear-registros', Class_TestCrearRegistros.as_view(), name="api_test_jwt"),
 	path('/test-serializable', Class_TestSerializable.as_view(), name="api_test_serializable"),
-	# path('/test-productos', Class_TestProductos.as_view(), name="api_test_Productos"),
+	path('/test-productos', Class_TestProductos.as_view(), name="api_test_Productos"),
 ]

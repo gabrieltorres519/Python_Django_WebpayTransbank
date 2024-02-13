@@ -141,3 +141,32 @@ class Class_TestSerializable(APIView):
 			datos_json.save()
 			return Response(datos_json.data)
 		return Response(datos_json.errors, status=400)
+	
+
+class Class_TestProductos(APIView):
+	
+	def get(self, request):
+		datos = Producto.objects.order_by('-id').all()
+		datos_json = ProductoSerializer(datos, many=True)
+		return Response(datos_json.data)
+
+	
+	# def post(self, request):#crear producto
+	# 	parser_class = (FileUploadParser,)
+	# 	datos_json = ProductoSaveSerializer(data=request.data)
+	# 	if datos_json.is_valid():
+	# 		datos_json.save()
+	# 		fotoarray=datos_json.data['foto'].split('/')
+	# 		foto=f"producto/{fotoarray[3]}"
+	# 		dreamhost.moverArchivoProducto(foto, int(datos_json.data['id']))
+	# 		return Response(datos_json.data, status=201)
+	# 	return Response(datos_json.errors, status=400)
+	"""
+	def post(self, request):#crear categoría
+		parser_class=(FileUploadParser,)
+		datos_json = ProductoSaveSerializer(data=request.data)
+		if datos_json.is_valid():
+			datos_json.save()
+			return Response(datos_json.data)
+		return Response(datos_json.errors, status=400)
+	"""
