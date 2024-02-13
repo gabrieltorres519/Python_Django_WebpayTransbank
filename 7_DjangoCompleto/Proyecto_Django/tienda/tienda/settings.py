@@ -11,10 +11,19 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from pathlib import Path
+import json
+from django.utils.html import format_html
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# Reference to the json file with the important information (datos de configuración)
+ruta = os.path.dirname(os.path.abspath(__file__))
+f = open('{}/conf.json'.format(ruta),'r')
+conf_string = f.read()
+f.close()
+conf = json.loads(conf_string)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -22,10 +31,25 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '@u)18$w-lnb^dhg7p8kr3=5!9gi=j&94o2_o7kwh(b@%fiu53x'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+BASE_URL = conf['base_url']
+TOTAL_PAGINAS = conf['paginacion']
 
-ALLOWED_HOSTS = []
+RUTA= conf['ruta']
+RUTA2= conf['ruta2']
+
+#envío mail
+SERVER_STMP=conf['smtp']
+PUERTO_SMTP= conf['smtp_puerto']
+MAIL_SALIDA = conf['email']
+PASSWORD_MAIL_SALIDA = conf['email_password']
+WEBPAY_URL=conf['webpay_url']
+WEBPAY_ID=conf['webpay_id']
+WEBPAY_SECRET=conf['webpay_secret']
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = conf['debug']
+
+ALLOWED_HOSTS = ['127.0.0.1','dominio.com','www.dominio.com','ip del computador local']
 
 
 # Application definition
@@ -37,6 +61,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'home'
 ]
 
 MIDDLEWARE = [
@@ -54,7 +79,7 @@ ROOT_URLCONF = 'tienda.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,10 +100,18 @@ WSGI_APPLICATION = 'tienda.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': conf['bd'],
+        'USER': conf['user'],
+        'PASSWORD': conf['password'],
+        'HOST': conf['server'],
+        'PORT': conf['puerto'],
+        'OPTIONS': {
+          'autocommit': True,
+        },
     }
 }
+
 
 
 # Password validation
@@ -103,7 +136,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-es'
 
 TIME_ZONE = 'UTC'
 
@@ -117,4 +150,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/assets/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'assets'),
+)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
