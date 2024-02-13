@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">{% load static %}{% load utilidades %}{% load static cookielaw_tags %}
+<html lang="en">{% load static %}
+    {% comment %} {% load utilidades %} {% endcomment %}
+    {% comment %} {% load static cookielaw_tags %} {% endcomment %}
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="author" content="www.tamila.cl" />
         <meta name="designer" content="www.tamila.cl" />
-        <meta name="description" content="{{2|getMetadata}}" />
+        {% comment %} <meta name="description" content="{{2|getMetadata}}" />
         <meta name="keywords" content="{{1|getMetadata}}" />
-        <title>{{5|getMetadata}} - {% block title %}{% endblock %}</title>
+        <title>{{5|getMetadata}} - {% block title %}{% endblock %}</title> {% endcomment %}
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{% static 'images/logo.png' %}" />
         <!-- Bootstrap icons-->
@@ -20,7 +22,7 @@
         {% block bloques_css %}{% endblock %}
     </head>
     <body>
-        {% cookielaw_banner %}
+        {% comment %} {% cookielaw_banner %} {% endcomment %}
 <script src="{% static 'cookielaw/js/cookielaw.js' %}" type="text/javascript"></script>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -32,23 +34,23 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
     <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'home_inicio' %}">Inicio</a></li>
-    {% if user.is_authenticated %}
+    {% comment %} {% if user.is_authenticated %}
     <li class="nav-item"><a class="nav-link" href="">Mi perfil</a></li>
     <li class="nav-item"><a class="nav-link" href="javascript:void(0);" onclick="salir('{% url 'acceso_salir' %}');">Salir</a></li>
     {% else %}
     <li class="nav-item"><a class="nav-link" href="{% url 'acceso_login' %}">Login</a></li>
     <li class="nav-item"><a class="nav-link" href="{% url 'acceso_registro' %}">Registro</a></li>
-    {% endif %}
+    {% endif %} {% endcomment %}
     
                         
     </ul>
     <form class="d-flex">
     
-    <button class="btn btn-outline-dark" type="button" onclick="window.location='{% url 'carro_inicio' %}';">
+    <button class="btn btn-outline-dark" type="button" onclick="window.location='';">
                             <i class="bi-cart-fill me-1"></i>
                             Carrito
                              
-                            {% if user.is_authenticated %}{{request.session.users_metadata_id|getCuantosItemsHayEnElCarrito|safe}}{% endif %}
+                            {% comment %} {% if user.is_authenticated %}{{request.session.users_metadata_id|getCuantosItemsHayEnElCarrito|safe}}{% endif %} {% endcomment %}
                         </button>
     </form>
                 </div>
@@ -69,7 +71,7 @@
        <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">&copy; Todos los derechos reservados {% now 'Y' %} | Desarrollado por <a href="https://www.tamila.cl" title="Tamila" target="_blank">Tamila</a></p></div>
         </footer>
-        <a class="whats-app " href="https://api.whatsapp.com/send?phone={{4|getMetadata}}&text=https://www.mipagina.com/ %0D%0A%0D%0AHola necesito información de: " target="_blank " title="Estamos disponibles. Cuéntanos en qué te podemos ayudar!!! ">
+        {% comment %} <a class="whats-app " href="https://api.whatsapp.com/send?phone={{4|getMetadata}}&text=https://www.mipagina.com/ %0D%0A%0D%0AHola necesito información de: " target="_blank " title="Estamos disponibles. Cuéntanos en qué te podemos ayudar!!! "> {% endcomment %}
         <i class="fab fa-whatsapp my-float"></i>
     </a>
         <script src="{% static 'js/jquery-2.0.0.min.js' %}"></script>
