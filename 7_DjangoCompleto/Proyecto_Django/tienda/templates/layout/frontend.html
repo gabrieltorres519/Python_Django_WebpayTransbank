@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">{% load static %}
-    {% comment %} {% load utilidades %} {% endcomment %}
+    {% load utilidades %}
     {% comment %} {% load static cookielaw_tags %} {% endcomment %}
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="author" content="www.tamila.cl" />
-        <meta name="designer" content="www.tamila.cl" />
-        {% comment %} <meta name="description" content="{{2|getMetadata}}" />
-        <meta name="keywords" content="{{1|getMetadata}}" />
-        <title>{{5|getMetadata}} - {% block title %}{% endblock %}</title> {% endcomment %}
+        <meta name="author" content="gabrieltorres" />
+        <meta name="designer" content="gabrieltorres" />
+        <meta name="description" content="{{2|getMetadata}}" />
+        <meta name="keywords" content="{{1|getMetadata}}" /> 
+        <title>{{5|getMetadata}} - {% block title %}{% endblock %}</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{% static 'images/logo.png' %}" />
         <!-- Bootstrap icons-->
@@ -71,7 +71,7 @@
        <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">&copy; Todos los derechos reservados {% now 'Y' %} | Desarrollado por <a href="https://www.tamila.cl" title="Tamila" target="_blank">Tamila</a></p></div>
         </footer>
-        {% comment %} <a class="whats-app " href="https://api.whatsapp.com/send?phone={{4|getMetadata}}&text=https://www.mipagina.com/ %0D%0A%0D%0AHola necesito información de: " target="_blank " title="Estamos disponibles. Cuéntanos en qué te podemos ayudar!!! "> {% endcomment %}
+        <a class="whats-app " href="https://api.whatsapp.com/send?phone={{4|getMetadata}}&text=https://www.mipagina.com/ %0D%0A%0D%0AHola necesito información de: " target="_blank " title="Estamos disponibles. Cuéntanos en qué te podemos ayudar!!! "> 
         <i class="fab fa-whatsapp my-float"></i>
     </a>
         <script src="{% static 'js/jquery-2.0.0.min.js' %}"></script>
