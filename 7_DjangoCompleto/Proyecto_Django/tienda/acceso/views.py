@@ -78,3 +78,23 @@ def acceso_registro(request):
             messages.add_message(request, messages.WARNING, mensaje)
             return HttpResponseRedirect('/acceso/registro')
     return render(request, 'acceso/registro.html', {'form': form})
+
+
+def acceso_verificacion(request, token):
+    token=utilidades.traducirToken(token)
+    fecha = datetime.now()
+    despues = fecha + timedelta(days=1)
+    fecha_numero=int(datetime.timestamp(despues))
+    if fecha_numero>token['time']:
+        try:
+            
+            UsersMetadata.objects.filter(user_id=token['id']).filter(estado_id=2).get()
+            User.objects.filter(pk=token['id']).update(is_active=1)
+            UsersMetadata.objects.filter(user_id=token['id']).update(estado_id=1)
+            mensaje = f"Se activó tu cuenta exitosamente, ahora ya puedes participar de nuestros contenidos. Te invitamos a loguearte y completar tu perfil, para que podamos conocernos mejor."
+            messages.add_message(request, messages.SUCCESS, mensaje)
+            return HttpResponseRedirect('/acceso/login')
+        except UsersMetadata.DoesNotExist:
+            raise Http404
+    else:
+        raise Http404
