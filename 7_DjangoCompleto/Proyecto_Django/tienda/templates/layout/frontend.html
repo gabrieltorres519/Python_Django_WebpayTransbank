@@ -34,13 +34,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
     <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'home_inicio' %}">Inicio</a></li>
-    {% comment %} {% if user.is_authenticated %}
+    
+    {% if user.is_authenticated %}
     <li class="nav-item"><a class="nav-link" href="">Mi perfil</a></li>
     <li class="nav-item"><a class="nav-link" href="javascript:void(0);" onclick="salir('{% url 'acceso_salir' %}');">Salir</a></li>
     {% else %}
     <li class="nav-item"><a class="nav-link" href="{% url 'acceso_login' %}">Login</a></li>
-    <li class="nav-item"><a class="nav-link" href="{% url 'acceso_registro' %}">Registro</a></li>
-    {% endif %} {% endcomment %}
+    {% comment %} <li class="nav-item"><a class="nav-link" href="{% url 'acceso_registro' %}">Registro</a></li> {% endcomment %}
+    {% endif %}
     
                         
     </ul>
