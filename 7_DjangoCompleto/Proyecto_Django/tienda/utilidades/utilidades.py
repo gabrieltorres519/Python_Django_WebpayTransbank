@@ -13,6 +13,7 @@ import time
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from smtplib import SMTPResponseException
 
 
 def getToken(json):
@@ -26,19 +27,30 @@ def traducirToken(token):
 
 def sendMail(html, asunto, para):
 
-    msg = MIMEMultipart('alternative')
-    msg['Subject'] = asunto
-    msg['From'] = settings.MAIL_SALIDA
-    msg['To'] = para
+    fromaddr = settings.MAIL_SALIDA # Cuenta que envia el correo
+    password = settings.PASSWORD_MAIL_SALIDA # Contraseña de aplicación creada en la cuenta que enviará el correo (en la sección verificación en dos pasos)
+    toaddr = para # Cuenta a la que se enviará el correo
+    
 
-    msg.attach(MIMEText(html, 'html'))
-    try:
-        server = smtplib.SMTP(settings.SERVER_STMP, settings.PUERTO_SMTP)
-        server.login(settings.MAIL_SALIDA, settings.PASSWORD_MAIL_SALIDA)
-        server.sendmail(settings.MAIL_SALIDA, para, msg.as_string())
-        server.quit()
-    except SMTPResponseException as e:
-        pass
+    # Configuración del mensaje
+    msg = MIMEMultipart() # Objeto encargado de las configuraciones para el envío del mensaje
+    msg['From'] = fromaddr
+    msg['To'] = toaddr
+    msg['Subject'] = asunto
+    msg.attach(MIMEText(html, 'html')) # Al constructor le mandamos el html y le indicamos que lo lea como html
+
+
+    # Configuración del envío del correo 
+    server = smtplib.SMTP(settings.SERVER_STMP, settings.PUERTO_SMTP) # Nombre y puerto del servidor de correo
+    server.starttls() # tls es el formato de renderización de los correos electrónicos, un forense de correos electrponicos apunta al tls, es como su firma
+    server.login(fromaddr, password=password)
+    
+    # Configuración del cuerpo del correo
+    text = msg.as_string()
+
+    # Envío del correo
+    server.sendmail(from_addr=fromaddr, to_addrs=toaddr, msg=text) 
+    server.quit()
 
 
 def getExtension(file):

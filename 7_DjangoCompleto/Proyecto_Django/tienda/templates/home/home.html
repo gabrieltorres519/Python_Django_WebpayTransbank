@@ -1,6 +1,6 @@
 {% extends '../layout/frontend.html' %} 
 {% load static %}
-{% comment %} {% load utilidades %} {% endcomment %}
+{% load utilidades %}
 {% block title %} Inicio {% endblock %}
 {% block content %}
 <section class="py-5">
@@ -17,7 +17,7 @@
             <div class="text-center">
             <!-- Product name-->
             <h5 class="fw-bolder">{{dato.nombre}}</h5>
-            {% comment %} ${{dato.precio|numberFormat}} {% endcomment %}
+             ${{dato.precio|numberFormat}} 
             </div>
            </div>
                             
