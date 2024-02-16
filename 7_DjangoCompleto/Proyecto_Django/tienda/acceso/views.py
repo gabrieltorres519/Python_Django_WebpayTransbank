@@ -98,3 +98,31 @@ def acceso_verificacion(request, token):
             raise Http404
     else:
         raise Http404
+    
+
+
+def acceso_reset(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect('/')
+    form = Formulario_Reset(request.POST or None)
+    if request.method =='POST':
+        if form.is_valid():
+            try:
+                user=UsersMetadata.objects.filter(correo=request.POST['correo']).get()
+                token=utilidades.getToken({'id': user.user_id, 'time':int(time.time())})
+                url=f"{settings.BASE_URL}acceso/restore/{token}"
+                html=f"""Hola {user.user.first_name} {user.user.last_name}, has solicitado recuperar tu contraseña, por motivos de seguridad te enviamos el siguiente enlace para terminar el proceso, o cópialo y pégalo en la barra de direcciones de tu navegador favorito:
+                    <br />
+                    <br />
+                    <a href="{url}">{url}</a>
+                """
+                utilidades.sendMail(html, 'Tienda', request.POST['correo'])
+                mensaje = f"Se ha enviado un mail a {request.POST['correo']} con las instrucciones para activar tu cuenta."
+                messages.add_message(request, messages.SUCCESS, mensaje)
+                return HttpResponseRedirect('/acceso/reset')
+            except UsersMetadata.DoesNotExist:
+                mensaje = f"El E-Mail {request.POST['correo']} no corresponde a ninguno de nuestros usuarios."
+                messages.add_message(request, messages.WARNING, mensaje)
+                return HttpResponseRedirect('/acceso/reset')
+    return render(request, 'acceso/reset.html', {'form': form})
+
