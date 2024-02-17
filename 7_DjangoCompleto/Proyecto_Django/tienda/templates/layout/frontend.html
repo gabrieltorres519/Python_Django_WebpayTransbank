@@ -51,7 +51,7 @@
                             <i class="bi-cart-fill me-1"></i>
                             Carrito
                              
-                            {% comment %} {% if user.is_authenticated %}{{request.session.users_metadata_id|getCuantosItemsHayEnElCarrito|safe}}{% endif %} {% endcomment %}
+                            {% if user.is_authenticated %}{{request.session.users_metadata_id|getCuantosItemsHayEnElCarrito|safe}}{% endif %} 
                         </button>
     </form>
                 </div>
