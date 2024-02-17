@@ -30,3 +30,23 @@ def carro_crear(request):
         return HttpResponseRedirect("/carro")
     else:
         raise Http404
+    
+
+@logueado()
+def carro_vaciar(request):
+    Carrito.objects.filter(users_metadata_id=request.session['users_metadata_id']).delete()
+    OrdenDeCompra.objects.filter(users_metadata_id=request.session['users_metadata_id']).filter(estado_id=3).delete()
+    
+    messages.add_message(request, messages.SUCCESS, f'Se vació tu carrito exitosamente!!!.')
+    return HttpResponseRedirect('/carro')
+
+
+@logueado()
+def carro_quitar(request, id):
+    try:
+        datos=Producto.objects.filter(pk=id).get()
+    except Producto.DoesNotExist:
+        raise Http404
+    Carrito.objects.filter(users_metadata_id=request.session['users_metadata_id']).filter(producto_id=id).delete()
+    messages.add_message(request, messages.SUCCESS, f'Se quitó el producto del carrito exitosamente!!!.')
+    return HttpResponseRedirect('/carro')
