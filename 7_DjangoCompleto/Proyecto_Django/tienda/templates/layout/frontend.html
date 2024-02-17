@@ -40,20 +40,20 @@
     <li class="nav-item"><a class="nav-link" href="javascript:void(0);" onclick="salir('{% url 'acceso_salir' %}');">Salir</a></li>
     {% else %}
     <li class="nav-item"><a class="nav-link" href="{% url 'acceso_login' %}">Login</a></li>
-    {% comment %} <li class="nav-item"><a class="nav-link" href="{% url 'acceso_registro' %}">Registro</a></li> {% endcomment %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'acceso_registro' %}">Registro</a></li> 
     {% endif %}
     
                         
     </ul>
     <form class="d-flex">
     
-    <button class="btn btn-outline-dark" type="button" onclick="window.location='';">
+    <button class="btn btn-outline-dark" type="button" onclick="window.location='{% url 'carro_inicio' %}';">
                             <i class="bi-cart-fill me-1"></i>
                             Carrito
                              
                             {% if user.is_authenticated %}{{request.session.users_metadata_id|getCuantosItemsHayEnElCarrito|safe}}{% endif %} 
                         </button>
-    </form>
+    </form> 
                 </div>
             </div>
         </nav>
