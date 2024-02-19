@@ -10,4 +10,4 @@ urlpatterns = [
 	path('pagar', carro_pagar, name="carro_pagar"),
 	path('webpay', carro_webpay, name="carro_webpay"),
 	path('webpay-respuesta', carro_webpay_respuesta, name="carro_webpay_respuesta"),
-]
+] 
