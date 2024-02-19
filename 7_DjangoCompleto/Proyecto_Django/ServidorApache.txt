@@ -1,0 +1,24 @@
+<VirtualHost *:80>
+    ServerName localhost
+    ServerAdmin gabrieltorres9909@gmail.com
+
+    DocumentRoot /var/www/html/Mi_tienda
+
+    Alias /assets /var/www/html/Mi_tienda/tienda/assets
+    <Directory /var/www/html/Mi_tienda/tienda/assets>
+        Require all granted
+    </Directory>
+
+    <Directory /var/www/html/Mi_tienda/tienda/tienda>
+        <Files wsgi.py>
+            Require all granted
+        </Files>
+    </Directory>
+
+    WSGIDaemonProcess localhost python-home=/var/www/html/Mi_tienda/Proyecto_Django_Completo python-path=/var/www/html/Mi_tienda/tienda
+    WSGIProcessGroup localhost
+    WSGIScriptAlias / /var/www/html/Mi_tienda/tienda/tienda/wsgi.py
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
