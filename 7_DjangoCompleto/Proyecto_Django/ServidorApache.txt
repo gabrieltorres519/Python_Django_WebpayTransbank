@@ -1,3 +1,8 @@
+
+Para desplegar usando wsgi python en apache
+
+LoadModule wsgi_module modules/mod_wsgi.so
+
 <VirtualHost *:80>
     ServerName localhost
     ServerAdmin gabrieltorres9909@gmail.com
@@ -22,3 +27,17 @@
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
+
+- Usarse en archivo apache2.conf
+
+sudo systemctl restart apache2
+
+systemctl status apache2.service
+
+- Para encontrar errores ver los logs de apache:
+
+sudo tail -n 50 /var/log/apache2/error.log
+
+- Los siguientes son los módulos necesarios, pero se recomienda desarrollar de cero en un entorno virtual, hacerlo funcionar y luego usar apache para trabajar ese entorno virtual
+
+sudo pip install asgiref Brotli certifi cffi chardet charset-normalizer cssselect2 defusedxml Django django-autoslug django-excel django-jazzmin djangorestframework ecdsa et-xmlfile excel fonttools html5lib idna lml mysql-connector-python mysqlclient odfpy openpyxl pillow pip pyasn1 pycparser pydyf pyexcel pyexcel-io pyexcel-ods pyexcel-webio pyexcel-xlsxw PyJWT pyphen python-jose python-slugify pytz requests rsa setuptools six sqlparse text-unidecode texttable tinycss2 typing_extensions urllib3 weasyprint webencodings wheel xlrd XlsxWriter zopfli 
