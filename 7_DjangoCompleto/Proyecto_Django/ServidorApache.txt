@@ -41,3 +41,6 @@ sudo tail -n 50 /var/log/apache2/error.log
 - Los siguientes son los módulos necesarios, pero se recomienda desarrollar de cero en un entorno virtual, hacerlo funcionar y luego usar apache para trabajar ese entorno virtual
 
 sudo pip install asgiref Brotli certifi cffi chardet charset-normalizer cssselect2 defusedxml Django django-autoslug django-excel django-jazzmin djangorestframework ecdsa et-xmlfile excel fonttools html5lib idna lml mysql-connector-python mysqlclient odfpy openpyxl pillow pip pyasn1 pycparser pydyf pyexcel pyexcel-io pyexcel-ods pyexcel-webio pyexcel-xlsxw PyJWT pyphen python-jose python-slugify pytz requests rsa setuptools six sqlparse text-unidecode texttable tinycss2 typing_extensions urllib3 weasyprint webencodings wheel xlrd XlsxWriter zopfli 
+
+
+- Comenzando a intentar el deploy, agregando un dominio no-ip primero
