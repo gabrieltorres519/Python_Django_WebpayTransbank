@@ -44,3 +44,5 @@ sudo pip install asgiref Brotli certifi cffi chardet charset-normalizer cssselec
 
 
 - Comenzando a intentar el deploy, agregando un dominio no-ip primero
+
+- Iniciando pruebas con Ngrok
