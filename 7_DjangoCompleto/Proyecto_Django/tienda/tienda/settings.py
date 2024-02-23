@@ -49,7 +49,7 @@ WEBPAY_SECRET=conf['webpay_secret']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = conf['debug']
 
-ALLOWED_HOSTS = ['b58c-2806-102e-25-b58-50c-14dc-4e43-3a62.ngrok-free.app']
+ALLOWED_HOSTS = ['d98e-2806-102e-25-b58-6191-3296-6745-a016.ngrok-free.app']
 
 
 # Application definition

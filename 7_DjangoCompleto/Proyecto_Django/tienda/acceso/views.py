@@ -64,7 +64,7 @@ def acceso_registro(request):
             token=utilidades.getToken({'id': u.id, 'time':int(time.time())})
             #token='123455'
             # url=f"{settings.BASE_URL}acceso/verificacion/{token}"
-            ngrokUrl = 'b58c-2806-102e-25-b58-50c-14dc-4e43-3a62.ngrok-free.app'
+            ngrokUrl = 'https://d98e-2806-102e-25-b58-6191-3296-6745-a016.ngrok-free.app'
             url=f"{ngrokUrl}/acceso/verificacion/{token}"
             html=f"""Hola {request.POST['nombre']} {request.POST['apellido']}, te has registrado correctamente en www.tienda.com. Estás a punto de completar tu registro, por favor haz clic en el siguiente enlace para terminar el proceso, o cópialo y pégalo en la barra de direcciones de tu navegador favorito:
                     <br />
