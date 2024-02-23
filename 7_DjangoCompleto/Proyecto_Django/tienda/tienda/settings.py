@@ -49,7 +49,7 @@ WEBPAY_SECRET=conf['webpay_secret']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = conf['debug']
 
-ALLOWED_HOSTS = ['127.0.0.1','dominio.com','www.dominio.com','ip del computador local']
+ALLOWED_HOSTS = ['b58c-2806-102e-25-b58-50c-14dc-4e43-3a62.ngrok-free.app']
 
 
 # Application definition

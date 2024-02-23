@@ -63,7 +63,9 @@ def acceso_registro(request):
             UsersMetadata.objects.create(correo=request.POST['correo'], telefono='', direccion='', estado_id=2, pais_id=1, perfiles_id=1, user_id=u.id, genero_id=3, slug = slugify(nombre))
             token=utilidades.getToken({'id': u.id, 'time':int(time.time())})
             #token='123455'
-            url=f"{settings.BASE_URL}acceso/verificacion/{token}"
+            # url=f"{settings.BASE_URL}acceso/verificacion/{token}"
+            ngrokUrl = 'b58c-2806-102e-25-b58-50c-14dc-4e43-3a62.ngrok-free.app'
+            url=f"{ngrokUrl}/acceso/verificacion/{token}"
             html=f"""Hola {request.POST['nombre']} {request.POST['apellido']}, te has registrado correctamente en www.tienda.com. Estás a punto de completar tu registro, por favor haz clic en el siguiente enlace para terminar el proceso, o cópialo y pégalo en la barra de direcciones de tu navegador favorito:
                     <br />
                     <br />
