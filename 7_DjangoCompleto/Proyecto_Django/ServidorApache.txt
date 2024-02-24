@@ -48,3 +48,5 @@ sudo pip install asgiref Brotli certifi cffi chardet charset-normalizer cssselec
 - Iniciando pruebas con Ngrok
 
 - Se ha verificado el funcionamiento de Ngrok y modificado enlaces para el correo de verificación de cuenta, falta arreglar el problema de redirección a la aplicación después de verificar el pago en webpay 
+
+- Proyecto en internet funcionando sin problemas. 
